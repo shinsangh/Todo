@@ -1,0 +1,59 @@
+let inputBox = document.getElementById('inputField');
+let addToDo = document.getElementById('addToDo');
+let toDoList = document.getElementById('toDoList');
+let style = document.getElementById('style');
+let count = document.getElementById('left-items');
+let count_num = 0;
+
+addToDo.addEventListener('click', function(){
+
+    var list = document.createElement('li');
+    list.id = 'style';
+    var button = document.createElement('input');
+    
+    button.class = 'delBtn';
+    button.type = 'button';
+    button.id = 'x';
+    button.value = 'X';
+    button.className = 'delBtn';
+    
+    if (!inputBox.value)
+        alert('내용을 입력해 주세요!');
+    else
+    {	
+    	list.innerText = inputBox.value;
+    	list.appendChild(button);
+        toDoList.appendChild(list);
+        inputBox.value= "";
+        count_num = parseInt(count_num) + 1;
+        count.innerText = count_num+" items left";
+    }
+
+    list.addEventListener('click', function(){
+    	if(style.style != null){
+    	alert('실행1');
+    	}else{
+    	alert('실행2');
+	    	list.style.textDecoration = "line-through";
+	        count_num = parseInt(count_num) - 1;
+	        count.innerText = count_num+" items left";
+    	}
+    	
+        
+    })
+    button.addEventListener('click', function(){
+        toDoList.removeChild(list);
+         if(list.style.textDecoration = "line-through"){
+         	
+         }      
+        count_num = parseInt(count_num) - 1;
+        count.innerText = count_num+" items left";
+    })
+})
+
+
+inputBox.addEventListener('keypress', (e) =>{
+        if( e.key === 'Enter' ){
+          	document.getElementById('addToDo').click();
+        }
+        })

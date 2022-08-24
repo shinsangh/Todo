@@ -1,0 +1,14 @@
+const todoInputElem = document.querySelector('.todo-input');
+
+let todos = [];
+let id = 0;
+
+const init = () => {
+    todoInputElem.addEventListener('keypress', (e) =>{
+        if( e.key === 'Enter' ){
+            appendTodos(e.target.value); todoInputElem.value ='';
+        }
+    })
+}
+
+init()

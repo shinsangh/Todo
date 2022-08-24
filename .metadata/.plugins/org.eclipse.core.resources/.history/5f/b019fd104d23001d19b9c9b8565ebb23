@@ -1,0 +1,39 @@
+let inputBox = document.getElementById('inputField');
+let addToDo = document.getElementById('addToDo');
+let toDoList = document.getElementById('toDoList');
+let count_num = 0;
+
+addToDo.addEventListener('click', function(){
+
+    var list = document.createElement('li');
+    var button = document.createElement('input');
+    count_num = ++
+    button.class = 'delBtn';
+    button.type = 'button';
+    button.id = 'x';
+    button.value = 'X';
+    button.className = 'delBtn';
+    if (!inputBox.value)
+        alert('내용을 입력해 주세요!');
+    else
+    {	
+    	list.innerText = inputBox.value;
+    	list.appendChild(button);
+        toDoList.appendChild(list);
+        inputBox.value= "";
+    }
+
+    list.addEventListener('click', function(){
+        list.style.textDecoration = "line-through";
+    })
+    button.addEventListener('click', function(){
+        toDoList.removeChild(list);
+    })
+})
+
+
+inputBox.addEventListener('keypress', (e) =>{
+        if( e.key === 'Enter' ){
+          	document.getElementById('addToDo').click();
+        }
+        })
